@@ -1,5 +1,11 @@
 <script setup>
+import { onMounted } from "vue";
 import HelloWorld from "./components/HelloWorld.vue";
+
+onMounted(async () => {
+  const response = await fetch("http://localhost:8080/api/test");
+  console.log(await response.json());
+});
 </script>
 
 <template>

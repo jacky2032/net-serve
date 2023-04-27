@@ -8,7 +8,7 @@ namespace Testing {
         public static void Main(string[] args) {
             Process process = new Process();
             process.StartInfo.FileName ="C:\\Program Files\\nodejs\\npm.cmd";
-            process.StartInfo.Arguments = "run dev";
+            process.StartInfo.Arguments = "run dev -- --port 8081";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.WorkingDirectory = Path.Combine(Directory.GetCurrentDirectory(),"ClientApp");
             process.Start();
@@ -19,7 +19,7 @@ namespace Testing {
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder.UseStartup<Startup>().UseUrls("http://*:8080");
                 });
     }
 }
